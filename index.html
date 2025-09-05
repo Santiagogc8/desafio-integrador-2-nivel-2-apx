@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Home - Santiago Guzman</title>
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Reset CSS -->
+		<link rel="stylesheet" href="./pages/reset.css" />
+
+		<!-- Header -->
+		<link rel="stylesheet" href="./components/header.css" />
+		<script defer src="./components/header.js"></script>
+
+		<!-- Card -->
+		<link rel="stylesheet" href="./components/card.css" />
+		<script defer src="./components/card.js"></script>
+
+		<!-- Form -->
+		<link rel="stylesheet" href="./components/form.css" />
+		<script defer src="./components/form.js"></script>
+
+		<!-- Footer -->
+		<link rel="stylesheet" href="./components/footer.css" />
+		<script defer src="./components/footer.js"></script>
+
+		<!-- Index -->
+		<link rel="stylesheet" href="./pages/index.css" />
+		<script defer src="./pages/index.js"></script>
+	</head>
+	<body>
+		<div class="wrapper">
+			<main class="main">
+				<h1 class="main__heading">Hola <br> <span>Soy Santiago Guzman</span></h1>
+				<img
+					src="https://images.ctfassets.net/8l01vzrwfkni/28o4iC18wsvvmmOHMyJMGj/155f7469331a2e13c5a04f18841bdb30/logo.png"
+					alt="imagen-heading"
+					class="main__img"
+				/>
+			</main>
+			<section class="about-me">
+				<div class="about-me__info">
+					<h2 class="about-me__h2">Soy Santiago Guzman</h2>
+					<p class="about-me__p">
+						Hola! Soy Santiago Guzman, Front-end Developer con experiencia en
+						Astro, Tailwind CSS, React, WordPress, JavaScript y Git. Mi pasión por
+						la tecnología y la programación me impulsa a aprender constantemente y
+						a buscar soluciones innovadoras. Mi objetivo es contribuir al
+						desarrollo de interfaces de usuario intuitivas y eficientes, y seguir
+						creciendo como profesional en el área de Front end.
+					</p>
+				</div>
+				<img
+					src="https://images.ctfassets.net/8l01vzrwfkni/28o4iC18wsvvmmOHMyJMGj/155f7469331a2e13c5a04f18841bdb30/logo.png"
+					alt=""
+					class="about-me__img"
+				/>
+			</section>
+			<section class="services">
+				<h2 class="services__h2">Mis <span>servicios</span></h2>
+				<div class="cards-container">
+					<template id="card">
+					<div class="card">
+						<img src="" alt="imagen" class="card-image" />
+						<h4 class="card-title"></h4>
+						<p class="card-text"></p>
+					</div>
+				</template>
+				</div>
+			</section>
+			<section class="form-container">
+				<h3 class="form-container__heading">Escribeme</h3>
+			</section>
+		</div>
+	</body>
+</html>
