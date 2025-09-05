@@ -43,11 +43,55 @@ function createForm(el, color = '#13171C'){ // Creamos una funcion para crear el
     <button class="form__submit-btn" type="submit">Enviar ${sendSvg.outerHTML}</button>
     `;
 
-    el.appendChild(form); // Y al parametro recibido, le agregamos el form
-
     // Se opto por crear un solo componente form que sera reutilizable en mas de 1 pagina. Como el boton es algo que esta directamente en todos los form y no en otros componentes, se prefirio solo incluirlo en el componente form
 
     form.addEventListener('submit', (e)=>{ // Escuchamos el evento submit
         e.preventDefault(); // Y del evento hacemos el prevent default para que no recargue la pagina
+
+        // Creamos un objeto FormData a partir del formulario
+        const formData = new FormData(form);
+
+        // Obtenemos los valores individuales de los campos
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const message = formData.get('mensaje');
+
+        // Guardamos en una variable el body
+        const requestBody = {
+            "to": "tu-email-de-estudiante@gmail.com",
+            "message": `
+                De: ${name}
+                Email: ${email}
+                Mensaje: ${message}
+            `
+        };
+
+        // Guardamos en una variable la url
+        const url = "https://apx.school/api/utils/email-to-student";
+
+        // Hacemos un fetch de la url y le pasamos un objeto con el metodo post
+        // Y convertimos en string el body
+        fetch(url, {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify(requestBody) // Convertir el objeto a JSON string
+        })
+        .then(response => {
+            // Manejamos la respuesta del servidor
+            if (response.ok) { // Si la respuesta es ok
+                alert("¡Mensaje enviado con éxito!"); // Enviamos una alerta
+                form.reset(); // Limpiamos el formulario
+            } else { // Si no, mostramos una alerta negativa (la url parece estar caida entonces no deja enviar)
+                alert("Hubo un error al enviar el mensaje. Inténtalo de nuevo.");
+            }
+        })
+        .catch(error => { // Si hay un error
+            console.error('Error:', error); // Mostramos por consola el error
+            alert("Hubo un problema de conexión. Revisa tu red."); // Y enviamos una alerta
+        });
     })
+
+    el.appendChild(form); // Y al parametro recibido en la funcion, le agregamos el form
 }

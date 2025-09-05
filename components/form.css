@@ -66,6 +66,7 @@
     font-weight: 700;
     border-radius: 1.5rem;
     background-color: #ffd230;
+    cursor: pointer;
 }
 
 @media (min-width: 960px){

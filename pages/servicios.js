@@ -1,24 +1,29 @@
-function pullThings(){
+function pullThings(){ // Hacemos una funcion para llamar a la api
+    // Devolvemos la promesa de la revisada a la api
     return fetch('https://cdn.contentful.com/spaces/8l01vzrwfkni/environments/master/entries?access_token=czXoFyjisb7wysKAWFnzFBFVg38pWqv2QgyK0RczVvc&content_type=desafoIntegrador2&include=2')
-    .then(data => data.json())
-    .then(json => {
+    .then(data => data.json()) // Convertimos la data obtenida a json
+    .then(json => { // Luego creamos un array vacio
         const assetUrls = []
 
+        // Y por cada imagen en json.items[0].fields.servicesImages
         for(image of json.items[0].fields.servicesImages){
-            const assetId = image.sys.id
+            const assetId = image.sys.id // Guardamos el id en una variable
 
+            // Y guardamos en una variable la validacion del find en el que pregunta si el a.sys.id es el mismo que el assetId
             const asset = json.includes.Asset.find(a => a.sys.id === assetId);
 
+            // Guardamos la url en una variable
             const assetRes = `https:${asset.fields.file.url}`;
 
+            // Y hacemos el push en el array
             assetUrls.push(assetRes);
         }
 
-        return assetUrls;
+        return assetUrls; // Y retornamos el array de urls
     })
 }
 
-function main(){
+function main(){ // Creamos la funcion main
     //* HEADER
     const wrapper = document.querySelector('.wrapper'); // Que obtiene el elemento .wrapper y lo guarda en una variable
     createHeader(wrapper); // Llamamos a la funcion createHeader y le pasamos wrapper como parametro
